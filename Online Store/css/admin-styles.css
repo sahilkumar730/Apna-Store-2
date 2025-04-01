@@ -1,0 +1,192 @@
+/* Login Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.login-container .mdl-card {
+    width: 320px;
+    padding: 20px;
+}
+
+.login-container .mdl-card__title {
+    justify-content: center;
+}
+
+.login-container .mdl-textfield {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.login-container .mdl-card__actions {
+    text-align: center;
+    padding: 16px 0;
+}
+
+/* Admin Dashboard Styles */
+.admin-container {
+    min-height: 100vh;
+}
+
+.mdl-layout__header {
+    background-color: #3f51b5;
+}
+
+.mdl-layout__drawer {
+    background-color: #fff;
+}
+
+.mdl-layout__drawer .mdl-navigation__link {
+    display: flex !important;
+    align-items: center;
+    color: #666;
+    font-weight: 500;
+}
+
+.mdl-layout__drawer .mdl-navigation__link:hover {
+    background-color: #e0e0e0;
+}
+
+.mdl-layout__drawer .mdl-navigation__link.active {
+    background-color: #e8eaf6;
+    color: #3f51b5;
+}
+
+.mdl-layout__drawer .mdl-navigation__link i {
+    margin-right: 16px;
+    color: inherit;
+}
+
+.page-content {
+    padding: 24px;
+}
+
+/* Section Styles */
+.admin-section {
+    margin-bottom: 32px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.section-header h4 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Product Card Styles */
+.product-card.mdl-card {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.product-card .mdl-card__title {
+    height: 176px;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.product-card .mdl-card__menu {
+    color: #fff;
+}
+
+/* Dialog Styles */
+.mdl-dialog {
+    width: 400px;
+}
+
+.mdl-dialog .mdl-textfield {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.mdl-dialog__title {
+    color: #3f51b5;
+}
+
+.mdl-dialog__content {
+    padding: 24px;
+}
+
+/* Table Styles */
+.mdl-data-table {
+    width: 100%;
+    white-space: normal;
+}
+
+.mdl-data-table td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Analytics Cards */
+.analytics-card.mdl-card {
+    width: 100%;
+    min-height: 320px;
+}
+
+.analytics-card .mdl-card__title {
+    background-color: #3f51b5;
+    color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 839px) {
+    .page-content {
+        padding: 16px;
+    }
+    
+    .mdl-dialog {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+/* Loading Spinner */
+.mdl-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #323232;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    display: none;
+}
+
+.toast.show {
+    display: block;
+    animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, 100%); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translate(-50%, 0); }
+    to { opacity: 0; transform: translate(-50%, 100%); }
+}

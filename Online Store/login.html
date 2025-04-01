@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Apna Store</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/auth-styles.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Login to Apna Store</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <form id="login-form">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" id="email" required>
+                        <label class="mdl-textfield__label" for="email">Email</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="password" required>
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div class="form-actions">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="remember-me">
+                            <input type="checkbox" id="remember-me" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <div class="mdl-card__actions">
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <p class="signup-link">
+                    Don't have an account? 
+                    <a href="register.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Sign Up
+                    </a>
+                </p>
+            </div>
+            <div class="social-login">
+                <p>Or login with</p>
+                <div class="social-buttons">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect google-btn">
+                        <img src="https://www.google.com/favicon.ico" alt="Google">
+                        Google
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect facebook-btn">
+                        <i class="material-icons">facebook</i>
+                        Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

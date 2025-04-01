@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apna Store Admin Panel</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/admin-styles.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="login-container" id="login-container">
+        <div class="mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Admin Login</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <form id="login-form">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="email" id="email" required>
+                        <label class="mdl-textfield__label" for="email">Email</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="password" required>
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div class="mdl-card__actions">
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container" id="admin-container" style="display: none;">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title">Apna Store Admin</span>
+                    <div class="mdl-layout-spacer"></div>
+                    <button id="logout-btn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                        Logout
+                    </button>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">Dashboard</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link active" href="#products">
+                        <i class="material-icons">shopping_cart</i> Products
+                    </a>
+                    <a class="mdl-navigation__link" href="#orders">
+                        <i class="material-icons">receipt</i> Orders
+                    </a>
+                    <a class="mdl-navigation__link" href="#customers">
+                        <i class="material-icons">people</i> Customers
+                    </a>
+                    <a class="mdl-navigation__link" href="#analytics">
+                        <i class="material-icons">analytics</i> Analytics
+                    </a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <!-- Products Section -->
+                    <section id="products-section" class="admin-section">
+                        <div class="section-header">
+                            <h4>Manage Products</h4>
+                            <button id="add-product-btn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
+                        <div class="mdl-grid" id="products-grid"></div>
+                    </section>
+
+                    <!-- Orders Section -->
+                    <section id="orders-section" class="admin-section" style="display: none;">
+                        <h4>Recent Orders</h4>
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Order ID</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Customer</th>
+                                    <th>Total</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Status</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table-body"></tbody>
+                        </table>
+                    </section>
+
+                    <!-- Customers Section -->
+                    <section id="customers-section" class="admin-section" style="display: none;">
+                        <h4>Customer List</h4>
+                        <div class="mdl-grid" id="customers-grid"></div>
+                    </section>
+
+                    <!-- Analytics Section -->
+                    <section id="analytics-section" class="admin-section" style="display: none;">
+                        <h4>Analytics Dashboard</h4>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <div class="mdl-card mdl-shadow--2dp">
+                                    <div class="mdl-card__title">
+                                        <h2 class="mdl-card__title-text">Sales Overview</h2>
+                                    </div>
+                                    <div class="mdl-card__supporting-text">
+                                        <canvas id="sales-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--6-col">
+                                <div class="mdl-card mdl-shadow--2dp">
+                                    <div class="mdl-card__title">
+                                        <h2 class="mdl-card__title-text">Top Products</h2>
+                                    </div>
+                                    <div class="mdl-card__supporting-text">
+                                        <canvas id="products-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Dialog -->
+    <dialog class="mdl-dialog" id="product-dialog">
+        <h4 class="mdl-dialog__title">Add New Product</h4>
+        <div class="mdl-dialog__content">
+            <form id="product-form">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="product-name" required>
+                    <label class="mdl-textfield__label" for="product-name">Product Name</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="number" step="0.01" id="product-price" required>
+                    <label class="mdl-textfield__label" for="product-price">Price</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="product-category" required>
+                    <label class="mdl-textfield__label" for="product-category">Category</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea class="mdl-textfield__input" type="text" rows="3" id="product-description" required></textarea>
+                    <label class="mdl-textfield__label" for="product-description">Description</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="url" id="product-image" required>
+                    <label class="mdl-textfield__label" for="product-image">Image URL</label>
+                </div>
+            </form>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button" id="save-product">Save</button>
+            <button type="button" class="mdl-button close" id="cancel-product">Cancel</button>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
